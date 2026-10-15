@@ -59,7 +59,7 @@ const PROJECTS = [
     headline: "Role-based campus management platform with grievance tracking and admin control.",
     description: "Campus operations platform with dedicated role-based portals for students, faculty, and administrators. Built with Firebase authentication, Firestore, and live request tracking.",
     stack: ["JavaScript", "Firebase Auth", "Firestore", "Firebase Hosting", "CSS3"],
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=2000",
+    image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=2000",
     href: "https://aegis-protocol-bd795.web.app",
     links: [
       { label: "Live Demo", url: "https://aegis-protocol-bd795.web.app" },
@@ -481,15 +481,38 @@ function ProjectsSlider() {
         if (actionsEl) gsap.fromTo(actionsEl.children, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: "power3.out", delay: 1.0 });
       }
 
-      // --- Load textures and start ---
-      const loadAll = async () => {
-        for (const s of slides) {
-          try {
-            slideTextures.push(await loadTexture(s.media, s.fallbackMedia));
-          } catch {
-            console.warn('Texture failed:', s.media);
-          }
+      // --- Fallback canvas texture if an image fails to load ---
+      const createPlaceholderTexture = () => {
+        const cvs = document.createElement('canvas');
+        cvs.width = 1920; cvs.height = 1080;
+        const ctx = cvs.getContext('2d');
+        if (ctx) {
+          const grad = ctx.createLinearGradient(0, 0, 1920, 1080);
+          grad.addColorStop(0, '#0a0a0a');
+          grad.addColorStop(1, '#002530');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, 0, 1920, 1080);
         }
+        const t = new THREE.CanvasTexture(cvs);
+        t.minFilter = t.magFilter = THREE.LinearFilter;
+        t.userData = { size: new THREE.Vector2(1920, 1080) };
+        return t;
+      };
+
+      // --- Load textures in strict 1-to-1 slide order ---
+      const loadAll = async () => {
+        const loaded: any[] = new Array(slides.length).fill(null);
+        await Promise.all(
+          slides.map(async (s, idx) => {
+            try {
+              loaded[idx] = await loadTexture(s.media, s.fallbackMedia);
+            } catch (err) {
+              console.warn(`Texture failed for slide ${idx}:`, s.media, err);
+              loaded[idx] = createPlaceholderTexture();
+            }
+          })
+        );
+        slideTextures = loaded.map(t => t || createPlaceholderTexture());
         if (slideTextures.length >= 2) {
           const u = shaderMaterial.uniforms;
           u.uTexture1.value = slideTextures[0]; u.uTexture2.value = slideTextures[1];
