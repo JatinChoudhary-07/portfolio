@@ -33,36 +33,13 @@ function ShinyButton({ children, href, className = "", onClick }: any) {
 }
 
 /* ============================================
-   KrayaSetu AI Description
-   ============================================ */
-function KrayaSetuDescription() {
-  return (
-    <div className="space-y-6 text-zinc-400">
-      <div>
-        <h4 className="text-white font-bold mb-2">The problem</h4>
-        <p>Track, signal and overhead line teams plan their maintenance separately. That means more track closures than needed, wasted maintenance windows, and delays that ripple into train schedules.</p>
-      </div>
-      <div>
-        <h4 className="text-white font-bold mb-2">What it does</h4>
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>Pulls maintenance jobs from track, signalling and traction sources, plus train timetables, into one format.</li>
-          <li>Scores each job by severity, criticality, age and opportunity.</li>
-          <li>Filters out combinations that clash on location, time, track, crew, resources or isolation.</li>
-          <li>Groups compatible jobs into shared blocks.</li>
-          <li>Builds a conflict free schedule with CP SAT, and keeps a safe gap between trains and maintenance.</li>
-          <li>Shows the plan on a dispatcher dashboard with a Gantt view and conflict alerts.</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className="text-white font-bold mb-2">Team and my part</h4>
-        <p>Built by a team of six. My part: <span className="text-[#00E5FF] font-medium opacity-90">backend and calculations</span></p>
-      </div>
-    </div>
-  );
-}
-
-/* ============================================
    Projects Data
+   TODO: supply project screenshots in /public/images/projects/
+   Filenames to supply:
+   1. /public/images/projects/krayasetu-ai.webp
+   2. /public/images/projects/hotel-room-allotment.webp
+   3. /public/images/projects/galactic-dashboard.webp
+   4. /public/images/projects/library-system.webp
    ============================================ */
 const PROJECTS = [
   {
@@ -70,9 +47,11 @@ const PROJECTS = [
     date: "2026",
     meta: "Smart India Hackathon • SIH26027 • Team of 6",
     headline: "Plans railway maintenance so compatible jobs share one track closure.",
-    description: KrayaSetuDescription,
+    role: "Backend and calculations. Team of six.",
+    description: "Bundles track, signalling and overhead maintenance jobs into shared blocks with constraint programming.",
     stack: ["Python", "FastAPI", "OR Tools", "React", "TypeScript", "DHTMLX"],
-    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=2000",
+    image: `${import.meta.env.BASE_URL}images/projects/krayasetu-ai.webp`,
+    fallbackImage: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=2000",
     href: "https://kraya-setu-ai.vercel.app/login",
     links: [
       { label: "Prototype", url: "https://kraya-setu-ai.vercel.app/login" },
@@ -87,9 +66,11 @@ const PROJECTS = [
     headline: "Manages room availability, bookings, and instant billing.",
     description: "A comprehensive management system that handles real-time room allocation, automates the booking lifecycle, and generates instant invoice billing with occupancy status tracking.",
     stack: ["Python", "Algorithms", "Data Structures"],
-    image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=2000",
-    href: "https://github.com/JatinChoudhary-07",
-    links: [{ label: "GitHub", url: "https://github.com/JatinChoudhary-07" }],
+    image: `${import.meta.env.BASE_URL}images/projects/hotel-room-allotment.webp`,
+    fallbackImage: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=2000",
+    href: "#",
+    // TODO: supply real GitHub URL for Hotel Room Allotment
+    links: [{ label: "GitHub", url: "#" }],
     highlight: "Handles real-time allocation across 50+ rooms with instant conflict-free billing."
   },
   {
@@ -99,11 +80,13 @@ const PROJECTS = [
     headline: "Visualizes civilization statistics and generates reports.",
     description: "An interactive analytics dashboard built to process complex civilization datasets, visualize them through dynamic charts, and automatically compile structured PDF reports.",
     stack: ["Python", "Streamlit", "Pandas", "Plotly", "ReportLab"],
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
+    image: `${import.meta.env.BASE_URL}images/projects/galactic-dashboard.webp`,
+    fallbackImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
     href: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/",
     links: [
       { label: "Live Demo", url: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/" },
-      { label: "GitHub", url: "https://github.com/JatinChoudhary-07" }
+      // TODO: supply real GitHub URL for Galactic Dashboard
+      { label: "GitHub", url: "#" }
     ],
     highlight: "Analyzes 50+ civilization parameters with dynamic charts & automated PDF generation."
   },
@@ -114,9 +97,11 @@ const PROJECTS = [
     headline: "App for books, members, issues, returns and fines.",
     description: "A robust desktop application relying on solid object-oriented principles to manage the complete lifecycle of library inventory and member transactions.",
     stack: ["Java", "OOP", "Swing", "File Handling"],
-    image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000",
-    href: "https://github.com/JatinChoudhary-07",
-    links: [{ label: "GitHub", url: "https://github.com/JatinChoudhary-07" }],
+    image: `${import.meta.env.BASE_URL}images/projects/library-system.webp`,
+    fallbackImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000",
+    href: "#",
+    // TODO: supply real GitHub URL for Library System
+    links: [{ label: "GitHub", url: "#" }],
     highlight: "Manages 1,000+ cataloged records with robust transaction state and fine calculation."
   }
 ];
@@ -162,8 +147,37 @@ declare const THREE: any;
 
 function ProjectsSlider() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [fallbackMode, setFallbackMode] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  });
 
   useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onMotionChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setFallbackMode(true);
+    };
+    motionQuery.addEventListener?.('change', onMotionChange);
+
+    if (motionQuery.matches) {
+      setFallbackMode(true);
+      return () => motionQuery.removeEventListener?.('change', onMotionChange);
+    }
+
+    const isWebGLAvailable = () => {
+      try {
+        const c = document.createElement('canvas');
+        return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+      } catch {
+        return false;
+      }
+    };
+
+    if (!isWebGLAvailable()) {
+      setFallbackMode(true);
+      return () => motionQuery.removeEventListener?.('change', onMotionChange);
+    }
+
     const container = containerRef.current;
     if (!container) return;
     let cleanupFn: (() => void) | null = null;
@@ -186,11 +200,22 @@ function ProjectsSlider() {
       try {
         await loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', 'gsap');
         await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', 'THREE');
-      } catch (e) { console.error('Script load failed:', e); return; }
+      } catch (e) {
+        console.warn('Script load failed, falling back to static grid:', e);
+        setFallbackMode(true);
+        return;
+      }
 
       const slides = PROJECTS.map(p => ({
-        title: p.title, description: p.headline, media: p.image,
-        stack: p.stack, links: p.links, meta: p.meta,
+        title: p.title,
+        description: p.headline,
+        highlight: p.highlight,
+        role: (p as any).role,
+        media: p.image,
+        fallbackMedia: (p as any).fallbackImage,
+        stack: p.stack,
+        links: p.links,
+        meta: p.meta,
       }));
 
       // --- State ---
@@ -252,17 +277,25 @@ function ProjectsSlider() {
       const updateContent = (idx: number) => {
         const titleEl = $('#projTitle') as HTMLElement;
         const descEl = $('#projDesc') as HTMLElement;
+        const highlightEl = $('#projHighlight') as HTMLElement;
         const metaEl = $('#projMeta') as HTMLElement;
         const actionsEl = $('#projActions') as HTMLElement;
         if (!titleEl || !descEl) return;
 
         gsap.to(titleEl.children, { y: -20, opacity: 0, duration: 0.4, stagger: 0.012, ease: "power2.in" });
-        gsap.to([descEl, metaEl, actionsEl].filter(Boolean), { y: -10, opacity: 0, duration: 0.3, ease: "power2.in" });
+        gsap.to([descEl, highlightEl, metaEl, actionsEl].filter(Boolean), { y: -10, opacity: 0, duration: 0.3, ease: "power2.in" });
 
         setTimeout(() => {
           const slide = slides[idx];
           titleEl.innerHTML = splitText(slide.title);
           descEl.textContent = slide.description;
+          if (highlightEl) {
+            const parts: string[] = [];
+            if (slide.highlight) parts.push(`<span>${slide.highlight}</span>`);
+            if (slide.role) parts.push(`<span class="text-[#00E5FF] font-medium">${slide.role}</span>`);
+            highlightEl.innerHTML = parts.join(' <span class="text-zinc-600 mx-1.5">•</span> ');
+            gsap.set(highlightEl, { y: 15, opacity: 0 });
+          }
           gsap.set(titleEl.children, { y: 20, opacity: 0 });
           gsap.set(descEl, { y: 15, opacity: 0 });
 
@@ -271,8 +304,9 @@ function ProjectsSlider() {
             gsap.set(metaEl.children, { y: 10, opacity: 0 });
           }
           if (actionsEl) {
-            actionsEl.innerHTML = slide.links.map((l: any, i: number) =>
-              `<a href="${l.url}" target="${l.url.startsWith('#') ? '_self' : '_blank'}" rel="noopener noreferrer" class="slide-action-btn${i === 0 ? ' primary' : ''}">${l.label}</a>`
+            const activeLinks = (slide.links || []).filter((l: any) => l.url && l.url !== '#' && l.url.trim() !== '');
+            actionsEl.innerHTML = activeLinks.map((l: any, i: number) =>
+              `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="slide-action-btn${i === 0 ? ' primary' : ''}">${l.label}</a>`
             ).join('');
             gsap.set(actionsEl.children, { y: 10, opacity: 0 });
           }
@@ -287,8 +321,9 @@ function ProjectsSlider() {
           anims[idx % anims.length]();
 
           gsap.to(descEl, { y: 0, opacity: 1, duration: 0.8, delay: 0.12, ease: "power3.out" });
-          if (metaEl) gsap.to(metaEl.children, { y: 0, opacity: 1, duration: 0.6, delay: 0.2, stagger: 0.025, ease: "power3.out" });
-          if (actionsEl) gsap.to(actionsEl.children, { y: 0, opacity: 1, duration: 0.6, delay: 0.3, stagger: 0.05, ease: "power3.out" });
+          if (highlightEl) gsap.to(highlightEl, { y: 0, opacity: 1, duration: 0.8, delay: 0.18, ease: "power3.out" });
+          if (metaEl) gsap.to(metaEl.children, { y: 0, opacity: 1, duration: 0.6, delay: 0.24, stagger: 0.025, ease: "power3.out" });
+          if (actionsEl) gsap.to(actionsEl.children, { y: 0, opacity: 1, duration: 0.6, delay: 0.32, stagger: 0.05, ease: "power3.out" });
         }, 420);
       };
 
@@ -306,6 +341,10 @@ function ProjectsSlider() {
       const stopTimer = () => { if (progressAnimation) clearInterval(progressAnimation); if (autoSlideTimer) clearTimeout(autoSlideTimer); progressAnimation = null; autoSlideTimer = null; };
       const startTimer = () => {
         if (!texturesLoaded || !sliderEnabled) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          stopTimer();
+          return;
+        }
         stopTimer();
         let progress = 0;
         const increment = (100 / AUTO_SLIDE_SPEED) * PROGRESS_INTERVAL;
@@ -320,7 +359,16 @@ function ProjectsSlider() {
           }
         }, PROGRESS_INTERVAL);
       };
-      const safeStartTimer = (delay = 0) => { stopTimer(); if (sliderEnabled && texturesLoaded) { if (delay > 0) autoSlideTimer = setTimeout(startTimer, delay); else startTimer(); } };
+      const safeStartTimer = (delay = 0) => {
+        stopTimer();
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+        if (sliderEnabled && texturesLoaded) {
+          if (delay > 0) autoSlideTimer = setTimeout(startTimer, delay);
+          else startTimer();
+        }
+      };
 
       // --- Slide transition ---
       const navigate = (targetIdx: number) => {
@@ -366,9 +414,27 @@ function ProjectsSlider() {
       };
 
       // --- Texture loading ---
-      const loadTexture = (src: string) => new Promise<any>((resolve, reject) => {
+      const loadTexture = (src: string, fallback?: string) => new Promise<any>((resolve, reject) => {
         const l = new THREE.TextureLoader();
-        l.load(src, (t: any) => { t.minFilter = t.magFilter = THREE.LinearFilter; t.userData = { size: new THREE.Vector2(t.image.width, t.image.height) }; resolve(t); }, undefined, reject);
+        const tryLoad = (url: string, isFallback: boolean) => {
+          l.load(
+            url,
+            (t: any) => {
+              t.minFilter = t.magFilter = THREE.LinearFilter;
+              t.userData = { size: new THREE.Vector2(t.image.width || 1920, t.image.height || 1080) };
+              resolve(t);
+            },
+            undefined,
+            (err: any) => {
+              if (!isFallback && fallback) {
+                tryLoad(fallback, true);
+              } else {
+                reject(err);
+              }
+            }
+          );
+        };
+        tryLoad(src, false);
       });
 
       // --- Init renderer ---
@@ -398,25 +464,42 @@ function ProjectsSlider() {
       updateCounter(0);
       const titleEl = container.querySelector('#projTitle') as HTMLElement;
       const descEl = container.querySelector('#projDesc') as HTMLElement;
+      const highlightEl = container.querySelector('#projHighlight') as HTMLElement;
       const metaEl = container.querySelector('#projMeta') as HTMLElement;
       const actionsEl = container.querySelector('#projActions') as HTMLElement;
 
       if (titleEl && descEl) {
         titleEl.innerHTML = splitText(slides[0].title);
         descEl.textContent = slides[0].description;
+        if (highlightEl) {
+          const parts: string[] = [];
+          if (slides[0].highlight) parts.push(`<span>${slides[0].highlight}</span>`);
+          if (slides[0].role) parts.push(`<span class="text-[#00E5FF] font-medium">${slides[0].role}</span>`);
+          highlightEl.innerHTML = parts.join(' <span class="text-zinc-600 mx-1.5">•</span> ');
+        }
         if (metaEl) metaEl.innerHTML = slides[0].stack.map((t: string) => `<span class="slide-tech-pill">${t}</span>`).join('');
-        if (actionsEl) actionsEl.innerHTML = slides[0].links.map((l: any, i: number) =>
-          `<a href="${l.url}" target="${l.url.startsWith('#') ? '_self' : '_blank'}" rel="noopener noreferrer" class="slide-action-btn${i === 0 ? ' primary' : ''}">${l.label}</a>`
-        ).join('');
+        if (actionsEl) {
+          const activeLinks = (slides[0].links || []).filter((l: any) => l.url && l.url !== '#' && l.url.trim() !== '');
+          actionsEl.innerHTML = activeLinks.map((l: any, i: number) =>
+            `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="slide-action-btn${i === 0 ? ' primary' : ''}">${l.label}</a>`
+          ).join('');
+        }
         gsap.fromTo(titleEl.children, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.022, ease: "power3.out", delay: 0.5 });
         gsap.fromTo(descEl, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.7 });
+        if (highlightEl) gsap.fromTo(highlightEl, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.78 });
         if (metaEl) gsap.fromTo(metaEl.children, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.025, ease: "power3.out", delay: 0.85 });
         if (actionsEl) gsap.fromTo(actionsEl.children, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.05, ease: "power3.out", delay: 1.0 });
       }
 
       // --- Load textures and start ---
       const loadAll = async () => {
-        for (const s of slides) { try { slideTextures.push(await loadTexture(s.media)); } catch { console.warn('Texture failed:', s.media); } }
+        for (const s of slides) {
+          try {
+            slideTextures.push(await loadTexture(s.media, s.fallbackMedia));
+          } catch {
+            console.warn('Texture failed:', s.media);
+          }
+        }
         if (slideTextures.length >= 2) {
           const u = shaderMaterial.uniforms;
           u.uTexture1.value = slideTextures[0]; u.uTexture2.value = slideTextures[1];
@@ -424,6 +507,8 @@ function ProjectsSlider() {
           texturesLoaded = true; sliderEnabled = true;
           container.classList.add('loaded');
           safeStartTimer(500);
+        } else {
+          setFallbackMode(true);
         }
       };
       loadAll();
@@ -461,6 +546,7 @@ function ProjectsSlider() {
 
       // --- Cleanup ---
       cleanupFn = () => {
+        motionQuery.removeEventListener?.('change', onMotionChange);
         observer.disconnect();
         document.removeEventListener('visibilitychange', onVis);
         stopTimer();
@@ -475,6 +561,74 @@ function ProjectsSlider() {
     return () => { if (cleanupFn) cleanupFn(); };
   }, []);
 
+  if (fallbackMode) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {PROJECTS.map((project) => {
+          const activeLinks = (project.links || []).filter(l => l.url && l.url !== '#' && l.url.trim() !== '');
+          return (
+            <div
+              key={project.title}
+              className="glass-card flex flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0a]/90 hover:border-[#00E5FF]/40 transition-colors"
+            >
+              <div className="relative aspect-video w-full overflow-hidden bg-zinc-900">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  onError={(e) => {
+                    if (project.fallbackImage && e.currentTarget.src !== project.fallbackImage) {
+                      e.currentTarget.src = project.fallbackImage;
+                    }
+                  }}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 md:p-8 flex flex-col flex-1 justify-between space-y-6">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono text-zinc-500">
+                    <span>{project.date}</span>
+                    <span>{project.meta}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white tracking-tight">{project.title}</h3>
+                  <p className="text-sm text-zinc-300 leading-relaxed">{project.headline}</p>
+                  {project.highlight && (
+                    <p className="text-xs font-mono text-zinc-400">
+                      {project.highlight}
+                      {(project as any).role && <span className="text-[#00E5FF] ml-2">• {(project as any).role}</span>}
+                    </p>
+                  )}
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {project.stack.map(tech => (
+                      <span key={tech} className="slide-tech-pill text-[10px]">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {activeLinks.length > 0 && (
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    {activeLinks.map((link, i) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`slide-action-btn${i === 0 ? ' primary' : ''}`}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className="slider-wrapper">
       <canvas className="webgl-canvas" aria-hidden="true" />
@@ -486,6 +640,7 @@ function ProjectsSlider() {
       <div className="slide-content">
         <h3 className="slide-title" id="projTitle" />
         <p className="slide-description" id="projDesc" />
+        <p className="slide-highlight" id="projHighlight" />
         <div className="slide-meta" id="projMeta" />
         <div className="slide-actions" id="projActions" />
       </div>
@@ -634,7 +789,7 @@ export default function Portfolio() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    document.title = "Jatin Choudhary | Developer · Designer · Problem Solver";
+    document.title = "Jatin Choudhary | CSE student, C++ and Python, UI/UX";
   }, []);
 
   useEffect(() => {
@@ -728,7 +883,7 @@ export default function Portfolio() {
               >
                 <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00E5FF]/8 border border-[#00E5FF]/15 text-[#00E5FF] text-xs font-mono uppercase tracking-[0.2em]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
-                  Backend Engineer · UI/UX Designer · Competitive Programmer
+                  C++ brain, Figma hands
                 </span>
               </motion.div>
 
@@ -747,9 +902,7 @@ export default function Portfolio() {
                 transition={{ duration: 1.2, delay: 0.35, ease: premiumEase }}
                 className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-lg mx-auto lg:mx-0"
               >
-                Second-year CSE student at <span className="text-white font-medium">SATI Vidisha</span>. Built an{' '}
-                <span className="text-white font-medium">AI railway scheduler</span> solving 500+ trains and 150+ maintenance jobs in under 8 seconds, and designed production screens at{' '}
-                <span className="text-white font-medium">Xenon Media India</span>. Solved 270+ LeetCode problems in C++.
+                Second year CSE at SATI. I solve problems in C++, build backends in Python, and design the interface when nobody else will. Half grid, half graph, still figuring out the rest.
               </motion.p>
 
               <motion.div
@@ -813,7 +966,7 @@ export default function Portfolio() {
                 { icon: "⚡", label: "270+ LeetCode" },
                 { icon: "🎓", label: "GPA 8.00" },
                 { icon: "🏆", label: "Smart India Hackathon 2026 (Selected)" },
-                { icon: "📝", label: "Co-Author, Research Paper" },
+                { icon: "📝", label: "Research paper in preparation" },
                 { icon: "🎨", label: "UI/UX @ Xenon Media" },
               ].map((item, i) => (
                 <div

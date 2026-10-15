@@ -109,6 +109,15 @@ html, body {
   font-weight: 400;
 }
 
+.slide-highlight {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.75);
+  margin-top: 0.5rem;
+  max-width: 580px;
+  line-height: 1.5;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+
 .slide-meta {
   display: flex;
   flex-wrap: wrap;
