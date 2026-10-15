@@ -15,79 +15,6 @@ function cn(...inputs: any[]) {
 const premiumEase = [0.16, 1, 0.3, 1];
 
 /* ============================================
-   Shiny Button Styles
-   ============================================ */
-const buttonStyles = `
-  @property --gradient-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-  @property --gradient-angle-offset { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-  @property --gradient-percent { syntax: "<percentage>"; initial-value: 5%; inherits: false; }
-  @property --gradient-shine { syntax: "<color>"; initial-value: white; inherits: false; }
-
-  .shiny-cta {
-    --shiny-cta-bg: #0a0a0a;
-    --shiny-cta-bg-subtle: #1a1818;
-    --shiny-cta-fg: #ffffff;
-    --shiny-cta-highlight: #00E5FF;
-    --shiny-cta-highlight-subtle: #8484ff;
-    --animation: gradient-angle linear infinite;
-    --duration: 3s;
-    --shadow-size: 2px;
-    --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
-    isolation: isolate; position: relative; overflow: hidden; cursor: pointer;
-    outline-offset: 4px; padding: 1.25rem 2.5rem;
-    font-family: "Inter", sans-serif; font-size: 0.875rem;
-    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
-    border: 1px solid transparent; border-radius: 360px;
-    color: var(--shiny-cta-fg);
-    background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
-      conic-gradient(from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-        transparent, var(--shiny-cta-highlight) var(--gradient-percent),
-        var(--gradient-shine) calc(var(--gradient-percent) * 2),
-        var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
-        transparent calc(var(--gradient-percent) * 4)
-      ) border-box;
-    box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
-    transition: var(--transition);
-    transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
-  }
-  .shiny-cta::before, .shiny-cta::after, .shiny-cta span::before {
-    content: ""; pointer-events: none; position: absolute;
-    inset-inline-start: 50%; inset-block-start: 50%; translate: -50% -50%; z-index: -1;
-  }
-  .shiny-cta:active { translate: 0 1px; }
-  .shiny-cta::before {
-    --size: calc(100% - var(--shadow-size) * 3); --position: 2px; --space: calc(var(--position) * 2);
-    width: var(--size); height: var(--size);
-    background: radial-gradient(circle at var(--position) var(--position), rgba(255,255,255,0.2) calc(var(--position) / 4), transparent 0) padding-box;
-    background-size: var(--space) var(--space); background-repeat: space;
-    mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
-    border-radius: inherit; opacity: 0.4; z-index: -1;
-  }
-  .shiny-cta::after {
-    --animation: shimmer linear infinite; width: 100%; aspect-ratio: 1;
-    background: linear-gradient(-50deg, transparent, var(--shiny-cta-highlight), transparent);
-    mask-image: radial-gradient(circle at bottom, transparent 40%, black); opacity: 0.6;
-  }
-  .shiny-cta span { z-index: 1; display: flex; align-items: center; gap: 0.5rem; }
-  .shiny-cta span::before {
-    --size: calc(100% + 1rem); width: var(--size); height: var(--size);
-    box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight); opacity: 0;
-    transition: opacity var(--transition); animation: calc(var(--duration) * 1.5) breathe linear infinite;
-  }
-  .shiny-cta, .shiny-cta::before, .shiny-cta::after {
-    animation: var(--animation) var(--duration), var(--animation) calc(var(--duration) / 0.4) reverse paused;
-    animation-composition: add;
-  }
-  .shiny-cta:is(:hover, :focus-visible) { --gradient-percent: 20%; --gradient-angle-offset: 95deg; --gradient-shine: var(--shiny-cta-highlight-subtle); }
-  .shiny-cta:is(:hover, :focus-visible), .shiny-cta:is(:hover, :focus-visible)::before, .shiny-cta:is(:hover, :focus-visible)::after { animation-play-state: running; }
-  .shiny-cta:is(:hover, :focus-visible) span::before { opacity: 1; }
-  @keyframes gradient-angle { to { --gradient-angle: 360deg; } }
-  @keyframes shimmer { to { rotate: 360deg; } }
-  @keyframes breathe { from, to { scale: 1; } 50% { scale: 1.2; } }
-`;
-
-/* ============================================
    Shiny Button Component
    ============================================ */
 function ShinyButton({ children, href, className = "", onClick }: any) {
@@ -157,12 +84,13 @@ const PROJECTS = [
     title: "Hotel Room Allotment",
     date: "Jan 2026",
     meta: "Python Application",
-    headline: "Manages room availability, bookings and billing.",
-    description: "A comprehensive management system that handles real-time room availability, automates the booking process, and generates accurate billing with occupancy status tracking.",
+    headline: "Manages room availability, bookings, and instant billing.",
+    description: "A comprehensive management system that handles real-time room allocation, automates the booking lifecycle, and generates instant invoice billing with occupancy status tracking.",
     stack: ["Python", "Algorithms", "Data Structures"],
     image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=2000",
-    href: "#",
-    links: [{ label: "GitHub", url: "#" }]
+    href: "https://github.com/JatinChoudhary-07",
+    links: [{ label: "GitHub", url: "https://github.com/JatinChoudhary-07" }],
+    highlight: "Handles real-time allocation across 50+ rooms with instant conflict-free billing."
   },
   {
     title: "Galactic Dashboard",
@@ -175,8 +103,9 @@ const PROJECTS = [
     href: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/",
     links: [
       { label: "Live Demo", url: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/" },
-      { label: "GitHub", url: "#" }
-    ]
+      { label: "GitHub", url: "https://github.com/JatinChoudhary-07" }
+    ],
+    highlight: "Analyzes 50+ civilization parameters with dynamic charts & automated PDF generation."
   },
   {
     title: "Library System",
@@ -186,8 +115,9 @@ const PROJECTS = [
     description: "A robust desktop application relying on solid object-oriented principles to manage the complete lifecycle of library inventory and member transactions.",
     stack: ["Java", "OOP", "Swing", "File Handling"],
     image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000",
-    href: "#",
-    links: [{ label: "GitHub", url: "#" }]
+    href: "https://github.com/JatinChoudhary-07",
+    links: [{ label: "GitHub", url: "https://github.com/JatinChoudhary-07" }],
+    highlight: "Manages 1,000+ cataloged records with robust transaction state and fine calculation."
   }
 ];
 
@@ -268,7 +198,7 @@ function ProjectsSlider() {
       let shaderMaterial: any, renderer: any, scene: any, camera: any;
       let slideTextures: any[] = [], texturesLoaded = false, sliderEnabled = false;
       let autoSlideTimer: any = null, progressAnimation: any = null, animFrameId: number | null = null;
-      const TRANSITION_DURATION = 2.5, AUTO_SLIDE_SPEED = 5000, PROGRESS_INTERVAL = 50;
+      const TRANSITION_DURATION = 2.5, AUTO_SLIDE_SPEED = 8000, PROGRESS_INTERVAL = 50;
 
       const getSize = () => ({ w: container.offsetWidth, h: container.offsetHeight });
       const $ = (sel: string) => container.querySelector(sel);
@@ -547,7 +477,7 @@ function ProjectsSlider() {
 
   return (
     <div ref={containerRef} className="slider-wrapper">
-      <canvas className="webgl-canvas" />
+      <canvas className="webgl-canvas" aria-hidden="true" />
       <div className="slide-counter">
         <span id="projNum">01</span>
         <span style={{ opacity: 0.3 }}> / </span>
@@ -623,6 +553,7 @@ function ScrollToTop({ visible }: { visible: boolean }) {
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.3, ease: premiumEase }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label="Scroll to top"
           className="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/25 text-[#00E5FF] backdrop-blur-md hover:bg-[#00E5FF]/20 transition-colors shadow-lg"
         >
           <ArrowUp className="w-5 h-5" />
@@ -703,7 +634,7 @@ export default function Portfolio() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    document.title = "Jatin Choudhary | CSE student, C++ and Python, UI/UX";
+    document.title = "Jatin Choudhary | Developer · Designer · Problem Solver";
   }, []);
 
   useEffect(() => {
@@ -731,7 +662,6 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-transparent text-zinc-300 font-sans selection:bg-[#00E5FF] selection:text-black relative overflow-x-hidden">
-      <style dangerouslySetInnerHTML={{ __html: buttonStyles }} />
       <AmbientBackground />
 
       {/* ── Fixed Header ── */}
@@ -798,7 +728,7 @@ export default function Portfolio() {
               >
                 <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00E5FF]/8 border border-[#00E5FF]/15 text-[#00E5FF] text-xs font-mono uppercase tracking-[0.2em]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
-                  Developer · Designer · Problem Solver
+                  Backend Engineer · UI/UX Designer · Competitive Programmer
                 </span>
               </motion.div>
 
@@ -817,17 +747,16 @@ export default function Portfolio() {
                 transition={{ duration: 1.2, delay: 0.35, ease: premiumEase }}
                 className="text-base md:text-lg text-zinc-400 leading-relaxed max-w-lg mx-auto lg:mx-0"
               >
-                Second-year CSE student who ships things that work — from an{' '}
-                <span className="text-white font-medium">AI railway scheduler</span> in Python to{' '}
-                <span className="text-white font-medium">pixel-perfect interfaces</span> in Figma.
-                I think in algorithms, build in code, and obsess over every detail in between.
+                Second-year CSE student at <span className="text-white font-medium">SATI Vidisha</span>. Built an{' '}
+                <span className="text-white font-medium">AI railway scheduler</span> solving 500+ trains and 150+ maintenance jobs in under 8 seconds, and designed production screens at{' '}
+                <span className="text-white font-medium">Xenon Media India</span>. Solved 270+ LeetCode problems in C++.
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.55, ease: premiumEase }}
-                className="flex flex-wrap gap-4 justify-center lg:justify-start"
+                className="flex flex-wrap gap-4 justify-center lg:justify-start items-center"
               >
                 <ShinyButton href="#projects">
                   View my work <ChevronRight className="w-4 h-4" />
@@ -837,6 +766,12 @@ export default function Portfolio() {
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold tracking-wider uppercase text-zinc-300 border border-white/10 hover:border-white/25 hover:text-white transition-all duration-500 hover:bg-white/5"
                 >
                   Get in touch
+                </a>
+                <a
+                  href="mailto:choudharyjatin.3110@gmail.com?subject=Resume%20Request%20-%20Jatin%20Choudhary"
+                  className="inline-flex items-center gap-2 px-6 py-4 rounded-full text-sm font-semibold tracking-wider uppercase text-[#00E5FF] border border-[#00E5FF]/25 hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/10 transition-all duration-500"
+                >
+                  Resume
                 </a>
               </motion.div>
             </div>
@@ -854,7 +789,7 @@ export default function Portfolio() {
                 {/* Glow ring */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#00E5FF]/20 to-transparent blur-xl" />
                 {/* Photo circle */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_80px_-15px_rgba(0,229,255,0.25)]">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 shadow-[0_0_80px_-15px_rgba(0,229,255,0.25)] bg-gradient-to-br from-[#00E5FF]/20 to-[#030509]">
                   <img
                     src={`${import.meta.env.BASE_URL}images/hero.jpg`}
                     alt="Jatin Choudhary"
@@ -877,7 +812,7 @@ export default function Portfolio() {
               {[
                 { icon: "⚡", label: "270+ LeetCode" },
                 { icon: "🎓", label: "GPA 8.00" },
-                { icon: "🏆", label: "Smart India Hackathon 2026" },
+                { icon: "🏆", label: "Smart India Hackathon 2026 (Selected)" },
                 { icon: "📝", label: "Co-Author, Research Paper" },
                 { icon: "🎨", label: "UI/UX @ Xenon Media" },
               ].map((item, i) => (
@@ -985,7 +920,7 @@ export default function Portfolio() {
                     title="B.Tech Computer Science & Engineering"
                     subtitle="Samrat Ashok Technological Institute (SATI), Vidisha"
                     score="GPA: 8.00 / 10.0"
-                    description="270+ LeetCode problems, mostly in C++. Taking NPTEL Algorithm Design and Analysis."
+                    description="Core coursework in Data Structures, Algorithms, Discrete Mathematics & Computer Architecture. NPTEL Algorithm Design and Analysis."
                     accentDot={true}
                     isFirst={true}
                   />
@@ -1001,6 +936,7 @@ export default function Portfolio() {
                     title="High School (Class X)"
                     subtitle="Holy Family Convent School, Indore, CBSE"
                     score="Score: 94.7%"
+                    description="Mathematics and Science distinction, 94.7% aggregate."
                   />
                 </SpotlightCard>
               </div>
@@ -1023,7 +959,7 @@ export default function Portfolio() {
                     <h3 className="text-sm font-bold tracking-[0.15em] text-white uppercase">Code Stack</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {["C", "C++", "Python", "Java", "HTML", "CSS", "Streamlit", "Pandas", "Plotly", "DSA", "OOP", "OS", "COA", "Git", "GitHub", "VS Code"].map(skill => (
+                    {["C", "C++", "Python", "Java", "HTML5", "CSS3", "React", "TypeScript", "FastAPI", "Tailwind CSS", "Streamlit", "Pandas", "Plotly", "DSA", "OOP", "Git", "GitHub", "Linux"].map(skill => (
                       <span key={skill} className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.07] text-zinc-300 text-sm font-medium hover:border-[#00E5FF]/30 hover:text-white hover:bg-[#00E5FF]/5 transition-all duration-300">
                         {skill}
                       </span>
@@ -1037,7 +973,7 @@ export default function Portfolio() {
                     <h3 className="text-sm font-bold tracking-[0.15em] text-white uppercase">Design Stack</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {["Figma", "Canva", "Elementor", "UI Layouts", "Design Systems"].map(skill => (
+                    {["Figma", "Elementor", "Design Systems", "Responsive UI", "Wireframing", "Prototyping", "User Research"].map(skill => (
                       <span key={skill} className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.07] text-zinc-300 text-sm font-medium hover:border-[#00E5FF]/30 hover:text-white hover:bg-[#00E5FF]/5 transition-all duration-300">
                         {skill}
                       </span>
@@ -1053,7 +989,7 @@ export default function Portfolio() {
                   <ul className="text-zinc-400 leading-relaxed space-y-4 text-sm">
                     <li className="flex items-start gap-3">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#00E5FF] flex-shrink-0" />
-                      <span>Smart India Hackathon 2026, team Honored_Ones (six members), problem statement SIH26027.</span>
+                      <span>Smart India Hackathon 2026 — Selected for internal round, Team Honored_Ones (six members), problem statement SIH26027.</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#00E5FF] flex-shrink-0" />
@@ -1070,9 +1006,12 @@ export default function Portfolio() {
       {/* ── Footer ── */}
       <footer id="contact" className="border-t border-white/5 bg-[#050505]/80 backdrop-blur-xl mt-32 relative z-10">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-32 flex flex-col items-center text-center">
-          <h2 className="text-5xl md:text-7xl lg:text-[8rem] font-black tracking-tighter text-white mb-12 drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+          <h2 className="text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-tighter text-white mb-6 drop-shadow-[0_0_30px_rgba(255,255,255,0.05)]">
             LET&apos;S TALK.
           </h2>
+          <p className="text-zinc-400 text-base md:text-lg max-w-lg mb-10 leading-relaxed">
+            Have an exciting opportunity, project, or collaboration? My inbox is always open.
+          </p>
           <div className="mb-12">
             <ShinyButton href="mailto:choudharyjatin.3110@gmail.com">
               choudharyjatin.3110@gmail.com <ArrowUpRight className="w-4 h-4 ml-2" />
@@ -1080,13 +1019,13 @@ export default function Portfolio() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 mb-24">
-            <a href="https://github.com/JatinChoudhary-07" target="_blank" rel="noreferrer" className="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0a0a0a] border border-white/10 text-zinc-300 hover:bg-[#111] hover:border-[#00E5FF]/50 hover:text-[#00E5FF] transition-all font-mono text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_20px_-5px_rgba(0,229,255,0.3)] hover:-translate-y-1">
+            <a href="https://github.com/JatinChoudhary-07" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0a0a0a] border border-white/10 text-zinc-300 hover:bg-[#111] hover:border-[#00E5FF]/50 hover:text-[#00E5FF] transition-all font-mono text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_20px_-5px_rgba(0,229,255,0.3)] hover:-translate-y-1">
               <Github className="w-5 h-5" /> GitHub
             </a>
-            <a href="https://leetcode.com/u/JatinChoudhary-07/" target="_blank" rel="noreferrer" className="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0a0a0a] border border-white/10 text-zinc-300 hover:bg-[#111] hover:border-[#00E5FF]/50 hover:text-[#00E5FF] transition-all font-mono text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_20px_-5px_rgba(0,229,255,0.3)] hover:-translate-y-1">
+            <a href="https://leetcode.com/u/JatinChoudhary-07/" target="_blank" rel="noreferrer" aria-label="LeetCode Profile" className="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0a0a0a] border border-white/10 text-zinc-300 hover:bg-[#111] hover:border-[#00E5FF]/50 hover:text-[#00E5FF] transition-all font-mono text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_20px_-5px_rgba(0,229,255,0.3)] hover:-translate-y-1">
               <Code2 className="w-5 h-5" /> LeetCode
             </a>
-            <a href="https://www.linkedin.com/in/jatin-choudhary-390336378" target="_blank" rel="noreferrer" className="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0a0a0a] border border-white/10 text-zinc-300 hover:bg-[#111] hover:border-[#00E5FF]/50 hover:text-[#00E5FF] transition-all font-mono text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_20px_-5px_rgba(0,229,255,0.3)] hover:-translate-y-1">
+            <a href="https://www.linkedin.com/in/jatin-choudhary-390336378" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="group flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0a0a0a] border border-white/10 text-zinc-300 hover:bg-[#111] hover:border-[#00E5FF]/50 hover:text-[#00E5FF] transition-all font-mono text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_20px_-5px_rgba(0,229,255,0.3)] hover:-translate-y-1">
               <Linkedin className="w-5 h-5" /> LinkedIn
             </a>
           </div>
