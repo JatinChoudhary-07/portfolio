@@ -42,7 +42,7 @@ const PROJECTS = [
     meta: "Smart India Hackathon • SIH26027 • Team of 6",
     headline: "Plans railway maintenance so compatible jobs share one track closure.",
     role: "Backend and calculations. Team of six.",
-    description: "Bundles track, signalling and overhead maintenance jobs into shared blocks with constraint programming.",
+    description: "Bundles track, signalling, and overhead maintenance jobs into shared blocks with constraint programming.",
     stack: ["Python", "FastAPI", "OR Tools", "React", "TypeScript", "DHTMLX"],
     image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=2000",
     href: "https://kraya-setu-ai.vercel.app/login",
@@ -50,7 +50,7 @@ const PROJECTS = [
       { label: "Prototype", url: "https://kraya-setu-ai.vercel.app/login" },
       { label: "GitHub", url: "https://github.com/JatinChoudhary-07/KrayaSetuAI" }
     ],
-    highlight: "500 trains and 150+ maintenance jobs solved in under 8 seconds."
+    highlight: "Optimizes track possession schedules using constraint programming."
   },
   {
     title: "CORE",
@@ -65,34 +65,36 @@ const PROJECTS = [
       { label: "Live Demo", url: "https://aegis-protocol-bd795.web.app" },
       { label: "GitHub", url: "https://github.com/JatinChoudhary-07/CORE" }
     ],
-    highlight: "Role-based portals for students, faculty, and admins with live grievance tracking."
+    highlight: "Role-based portals for students, faculty, and administrators with grievance tracking."
   },
   {
     title: "Galactic Dashboard",
     date: "Dec 2025",
     meta: "Data Visualization",
-    headline: "Visualizes civilization statistics and generates reports.",
-    description: "An interactive analytics dashboard built to process complex civilization datasets, visualize them through dynamic charts, and automatically compile structured PDF reports.",
+    headline: "Visualizes civilization datasets and generates intelligence reports.",
+    description: "Interactive analytics dashboard built to monitor civilization datasets, compare planetary development through dynamic charts, and automatically compile structured PDF reports.",
     stack: ["Python", "Streamlit", "Pandas", "Plotly", "ReportLab"],
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
     href: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/",
     links: [
       { label: "Live Demo", url: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/" },
-      { label: "GitHub", url: "#" }
+      { label: "GitHub", url: "https://github.com/JatinChoudhary-07/galactic-civilization-dashboard" }
     ],
-    highlight: "Analyzes 50+ civilization parameters with dynamic charts & automated PDF generation."
+    highlight: "Interactive trend visualization and automated PDF intelligence reports."
   },
   {
     title: "Library System",
     date: "Oct 2025",
-    meta: "Desktop Application",
-    headline: "App for books, members, issues, returns and fines.",
-    description: "A robust desktop application relying on solid object-oriented principles to manage the complete lifecycle of library inventory and member transactions.",
+    meta: "Java Desktop Application • Swing & OOP",
+    headline: "Desktop app for books, members, issues, returns, and fines.",
+    description: "A desktop application built with object-oriented architecture and persistent file handling to manage book inventories, member transactions, and overdue tracking.",
     stack: ["Java", "OOP", "Swing", "File Handling"],
     image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000",
-    href: "#",
-    links: [{ label: "GitHub", url: "#" }],
-    highlight: "Manages 1,000+ cataloged records with robust transaction state and fine calculation."
+    href: "https://github.com/JatinChoudhary-07/Advanced_Library_Management_System_Java",
+    links: [
+      { label: "GitHub", url: "https://github.com/JatinChoudhary-07/Advanced_Library_Management_System_Java" }
+    ],
+    highlight: "Persistent state management with complete book and member transaction workflows."
   }
 ];
 
