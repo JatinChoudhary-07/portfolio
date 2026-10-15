@@ -34,12 +34,6 @@ function ShinyButton({ children, href, className = "", onClick }: any) {
 
 /* ============================================
    Projects Data
-   TODO: supply project screenshots in /public/images/projects/
-   Filenames to supply:
-   1. /public/images/projects/krayasetu-ai.webp
-   2. /public/images/projects/hotel-room-allotment.webp
-   3. /public/images/projects/galactic-dashboard.webp
-   4. /public/images/projects/library-system.webp
    ============================================ */
 const PROJECTS = [
   {
@@ -50,8 +44,7 @@ const PROJECTS = [
     role: "Backend and calculations. Team of six.",
     description: "Bundles track, signalling and overhead maintenance jobs into shared blocks with constraint programming.",
     stack: ["Python", "FastAPI", "OR Tools", "React", "TypeScript", "DHTMLX"],
-    image: `${import.meta.env.BASE_URL}images/projects/krayasetu-ai.webp`,
-    fallbackImage: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=2000",
+    image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=2000",
     href: "https://kraya-setu-ai.vercel.app/login",
     links: [
       { label: "Prototype", url: "https://kraya-setu-ai.vercel.app/login" },
@@ -60,18 +53,19 @@ const PROJECTS = [
     highlight: "500 trains and 150+ maintenance jobs solved in under 8 seconds."
   },
   {
-    title: "Hotel Room Allotment",
-    date: "Jan 2026",
-    meta: "Python Application",
-    headline: "Manages room availability, bookings, and instant billing.",
-    description: "A comprehensive management system that handles real-time room allocation, automates the booking lifecycle, and generates instant invoice billing with occupancy status tracking.",
-    stack: ["Python", "Algorithms", "Data Structures"],
-    image: `${import.meta.env.BASE_URL}images/projects/hotel-room-allotment.webp`,
-    fallbackImage: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&q=80&w=2000",
-    href: "#",
-    // TODO: supply real GitHub URL for Hotel Room Allotment
-    links: [{ label: "GitHub", url: "#" }],
-    highlight: "Handles real-time allocation across 50+ rooms with instant conflict-free billing."
+    title: "CORE",
+    date: "2026",
+    meta: "Campus Operations & Resource Engine",
+    headline: "Role-based campus management platform with grievance tracking and admin control.",
+    description: "Campus operations platform with dedicated role-based portals for students, faculty, and administrators. Built with Firebase authentication, Firestore, and live request tracking.",
+    stack: ["JavaScript", "Firebase Auth", "Firestore", "Firebase Hosting", "CSS3"],
+    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=2000",
+    href: "https://aegis-protocol-bd795.web.app",
+    links: [
+      { label: "Live Demo", url: "https://aegis-protocol-bd795.web.app" },
+      { label: "GitHub", url: "https://github.com/JatinChoudhary-07/CORE" }
+    ],
+    highlight: "Role-based portals for students, faculty, and admins with live grievance tracking."
   },
   {
     title: "Galactic Dashboard",
@@ -80,12 +74,10 @@ const PROJECTS = [
     headline: "Visualizes civilization statistics and generates reports.",
     description: "An interactive analytics dashboard built to process complex civilization datasets, visualize them through dynamic charts, and automatically compile structured PDF reports.",
     stack: ["Python", "Streamlit", "Pandas", "Plotly", "ReportLab"],
-    image: `${import.meta.env.BASE_URL}images/projects/galactic-dashboard.webp`,
-    fallbackImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
     href: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/",
     links: [
       { label: "Live Demo", url: "https://galactic-civilization-dashboard-bw3w5rjzfhanw896jfmvwm.streamlit.app/" },
-      // TODO: supply real GitHub URL for Galactic Dashboard
       { label: "GitHub", url: "#" }
     ],
     highlight: "Analyzes 50+ civilization parameters with dynamic charts & automated PDF generation."
@@ -97,10 +89,8 @@ const PROJECTS = [
     headline: "App for books, members, issues, returns and fines.",
     description: "A robust desktop application relying on solid object-oriented principles to manage the complete lifecycle of library inventory and member transactions.",
     stack: ["Java", "OOP", "Swing", "File Handling"],
-    image: `${import.meta.env.BASE_URL}images/projects/library-system.webp`,
-    fallbackImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000",
+    image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=2000",
     href: "#",
-    // TODO: supply real GitHub URL for Library System
     links: [{ label: "GitHub", url: "#" }],
     highlight: "Manages 1,000+ cataloged records with robust transaction state and fine calculation."
   }
