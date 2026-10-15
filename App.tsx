@@ -275,7 +275,9 @@ function ProjectsSlider() {
         if (!titleEl || !descEl) return;
 
         gsap.to(titleEl.children, { y: -20, opacity: 0, duration: 0.4, stagger: 0.012, ease: "power2.in" });
-        gsap.to([descEl, highlightEl, metaEl, actionsEl].filter(Boolean), { y: -10, opacity: 0, duration: 0.3, ease: "power2.in" });
+        gsap.to([descEl, highlightEl].filter(Boolean), { y: -10, opacity: 0, duration: 0.3, ease: "power2.in" });
+        if (metaEl && metaEl.children.length > 0) gsap.to(metaEl.children, { y: -10, opacity: 0, duration: 0.3, ease: "power2.in" });
+        if (actionsEl && actionsEl.children.length > 0) gsap.to(actionsEl.children, { y: -10, opacity: 0, duration: 0.3, ease: "power2.in" });
 
         setTimeout(() => {
           const slide = slides[idx];
@@ -292,10 +294,12 @@ function ProjectsSlider() {
           gsap.set(descEl, { y: 15, opacity: 0 });
 
           if (metaEl) {
-            metaEl.innerHTML = slide.stack.map((t: string) => `<span class="slide-tech-pill">${t}</span>`).join('');
+            gsap.set(metaEl, { opacity: 1, y: 0 });
+            metaEl.innerHTML = (slide.stack || []).map((t: string) => `<span class="slide-tech-pill">${t}</span>`).join('');
             gsap.set(metaEl.children, { y: 10, opacity: 0 });
           }
           if (actionsEl) {
+            gsap.set(actionsEl, { opacity: 1, y: 0 });
             const activeLinks = (slide.links || []).filter((l: any) => l.url && l.url !== '#' && l.url.trim() !== '');
             actionsEl.innerHTML = activeLinks.map((l: any, i: number) =>
               `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="slide-action-btn${i === 0 ? ' primary' : ''}">${l.label}</a>`
@@ -469,8 +473,12 @@ function ProjectsSlider() {
           if (slides[0].role) parts.push(`<span class="text-[#00E5FF] font-medium">${slides[0].role}</span>`);
           highlightEl.innerHTML = parts.join(' <span class="text-zinc-600 mx-1.5">•</span> ');
         }
-        if (metaEl) metaEl.innerHTML = slides[0].stack.map((t: string) => `<span class="slide-tech-pill">${t}</span>`).join('');
+        if (metaEl) {
+          gsap.set(metaEl, { opacity: 1, y: 0 });
+          metaEl.innerHTML = slides[0].stack.map((t: string) => `<span class="slide-tech-pill">${t}</span>`).join('');
+        }
         if (actionsEl) {
+          gsap.set(actionsEl, { opacity: 1, y: 0 });
           const activeLinks = (slides[0].links || []).filter((l: any) => l.url && l.url !== '#' && l.url.trim() !== '');
           actionsEl.innerHTML = activeLinks.map((l: any, i: number) =>
             `<a href="${l.url}" target="_blank" rel="noopener noreferrer" class="slide-action-btn${i === 0 ? ' primary' : ''}">${l.label}</a>`
