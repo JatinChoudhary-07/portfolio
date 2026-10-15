@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Global — Smooth & Performant
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #030509;
+  color: #d4d4d8;
+  font-family: 'Montserrat', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Force GPU compositing for smooth scrolling */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ============================================
+   Lumina WebGL Slider
+   ============================================ */
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  background: #0a0a0a;
+  will-change: opacity;
+}
+
+.slider-wrapper.loaded {
+  opacity: 1;
+}
+
+.slider-wrapper .webgl-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit;
+  display: block;
+}
+
+/* Bottom gradient for text readability — stronger */
+.slider-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75%;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.15) 65%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+  border-radius: inherit;
+}
+
+.slide-counter {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  z-index: 10;
+  letter-spacing: 0.15em;
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 7rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.slide-title {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 0 60px rgba(0,229,255,0.25), 0 2px 40px rgba(0,0,0,0.8), 0 0 2px rgba(255,255,255,0.3);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.slide-description {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  margin-top: 0.75rem;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.7);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.slide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  pointer-events: auto;
+}
+
+.slide-tech-pill {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+
+.slide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  pointer-events: auto;
+}
+
+.slide-action-btn {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(0, 229, 255, 0.15);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 229, 255, 0.1);
+  position: relative;
+  z-index: 20;
+}
+
+.slide-action-btn:hover {
+  background: rgba(0, 229, 255, 0.28);
+  border-color: rgba(0, 229, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.2);
+}
+
+.slide-action-btn.primary {
+  background: #00E5FF;
+  color: #000;
+  border-color: #00E5FF;
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+}
+
+.slide-action-btn.primary:hover {
+  background: #33ecff;
+  box-shadow: 0 6px 30px rgba(0, 229, 255, 0.45);
+}
+
+.slides-navigation {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.slide-nav-item {
+  flex: 1;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  transition: opacity 0.3s;
+  opacity: 0.4;
+}
+
+.slide-nav-item:hover {
+  opacity: 0.7;
+}
+
+.slide-nav-item.active {
+  opacity: 1;
+}
+
+.slide-progress-line {
+  height: 2px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.slide-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #00E5FF;
+  border-radius: 1px;
+  transition: width 0.1s ease, opacity 0.3s ease;
+}
+
+.slide-nav-title {
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-nav-item.active .slide-nav-title {
+  color: #00E5FF;
+  text-shadow: 0 0 12px rgba(0,229,255,0.4);
+}
+
+.slide-nav-item:hover .slide-nav-title {
+  color: rgba(255,255,255,0.7);
+}
+
+/* ============================================
+   Glassmorphic Card Styles
+   ============================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%, rgba(0,229,255,0.02) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 229, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 0 40px -15px rgba(0, 229, 255, 0.12),
+    0 20px 60px -20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .slide-nav-title {
+    display: none;
+  }
+
+  .slide-content {
+    bottom: 5rem;
+    left: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .slides-navigation {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .slider-wrapper {
+    height: 65vh;
+    border-radius: 1rem;
+    min-height: 400px;
+  }
+
+  .slide-title {
+    font-size: clamp(1.75rem, 8vw, 2.75rem);
+  }
+
+  .slide-description {
+    font-size: 0.85rem;
+  }
+}
